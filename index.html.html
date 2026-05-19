@@ -1,0 +1,732 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holy Light Mission School</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1a3e;
+    --gold: #f5a623;
+    --red: #c0392b;
+    --white: #ffffff;
+    --light-bg: #f0f4ff;
+    --green: #27ae60;
+    --shadow: 0 8px 32px rgba(10,26,62,0.12);
+  }
+ 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--light-bg);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+ 
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 60%, #0d2654 100%);
+    color: white;
+    text-align: center;
+    padding: 0 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: -80px;
+    width: 340px; height: 340px;
+    background: radial-gradient(circle, rgba(245,166,35,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(192,57,43,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+ 
+  .top-bar {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
+    padding: 7px 1rem;
+    text-transform: uppercase;
+  }
+ 
+  .hero-inner {
+    padding: 3rem 1rem 2.5rem;
+    position: relative; z-index: 1;
+  }
+ 
+  .logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .logo-circle {
+    width: 70px; height: 70px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 18px rgba(245,166,35,0.4);
+    flex-shrink: 0;
+  }
+  .school-name h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: 2px;
+    text-shadow: 0 3px 14px rgba(0,0,0,0.4);
+  }
+  .school-name h1 span { color: var(--gold); }
+  .school-name .subtitle {
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    margin-top: 4px;
+  }
+ 
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-top: 1.4rem;
+  }
+  .badge {
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.25);
+    border-radius: 50px;
+    padding: 6px 18px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    backdrop-filter: blur(6px);
+    letter-spacing: 0.5px;
+  }
+  .badge.gold { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+ 
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-top: 1.8rem;
+  }
+  .btn {
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.18s, box-shadow 0.18s;
+    letter-spacing: 0.5px;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.22); }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.55); }
+ 
+  .wave {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+  .wave svg { display: block; width: 100%; }
+ 
+  /* ── HIGHLIGHTS STRIP ── */
+  .highlights {
+    background: var(--red);
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+  }
+  .hl-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  .hl-item:last-child { border-right: none; }
+  .hl-icon { font-size: 1.4rem; }
+ 
+  /* ── FREE ADMISSION BANNER ── */
+  .free-admission {
+    background: linear-gradient(90deg, var(--green), #2ecc71);
+    color: white;
+    text-align: center;
+    padding: 16px 1rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+  }
+  .free-admission::before {
+    content: '🎉';
+    font-size: 1.5rem;
+    margin-right: 8px;
+  }
+  .free-admission::after {
+    content: '🎉';
+    font-size: 1.5rem;
+    margin-left: 8px;
+  }
+ 
+  /* ── SECTIONS ── */
+  section { padding: 3.5rem 1.2rem; }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 900;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 60px; height: 4px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin: 12px auto 0;
+  }
+ 
+  /* ── FEATURES ── */
+  .features { background: white; }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .feat-card {
+    background: var(--light-bg);
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border-left: 4px solid var(--gold);
+    transition: transform 0.18s, box-shadow 0.18s;
+    box-shadow: var(--shadow);
+  }
+  .feat-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(10,26,62,0.14); }
+  .feat-icon { font-size: 1.7rem; flex-shrink: 0; margin-top: 2px; }
+  .feat-card h3 { font-size: 0.95rem; font-weight: 800; color: var(--navy); margin-bottom: 3px; }
+  .feat-card p { font-size: 0.83rem; color: #555; line-height: 1.5; }
+ 
+  /* ── SPECIAL OFFER ── */
+  .offer-section { background: var(--navy); }
+  .offer-box {
+    max-width: 700px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #f5a623, #f39c12);
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 16px 48px rgba(245,166,35,0.35);
+    position: relative;
+    overflow: hidden;
+  }
+  .offer-box::before {
+    content: '★';
+    position: absolute; top: -20px; right: -10px;
+    font-size: 120px; color: rgba(255,255,255,0.1);
+    line-height: 1;
+  }
+  .offer-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--navy);
+    font-weight: 900;
+  }
+  .offer-box .discount {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1;
+    margin: 0.5rem 0;
+  }
+  .offer-box p { color: var(--navy); font-weight: 700; font-size: 1rem; }
+  .offer-box .limited { font-size: 0.82rem; color: rgba(10,26,62,0.65); margin-top: 8px; font-style: italic; }
+ 
+  /* ── STAFF ── */
+  .staff { background: var(--light-bg); }
+  .staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.6rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .staff-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.18s;
+  }
+  .staff-card:hover { transform: translateY(-4px); }
+  .staff-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), #2a5298);
+    margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.2rem;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+  }
+  .staff-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--navy); }
+  .staff-card .role { font-size: 0.8rem; color: var(--red); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 4px 0; }
+  .staff-card .from { font-size: 0.82rem; color: #777; }
+  .staff-card .exp { font-size: 0.8rem; font-weight: 700; color: var(--green); margin-top: 4px; }
+ 
+  /* ── CONTACT ── */
+  .contact { background: var(--navy); color: white; }
+  .contact .section-title { color: white; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.4rem;
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: background 0.18s;
+  }
+  .contact-card:hover { background: rgba(255,255,255,0.12); }
+  .contact-card .c-icon { font-size: 2rem; margin-bottom: 8px; }
+  .contact-card h3 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); font-weight: 800; margin-bottom: 8px; }
+  .contact-card p { font-size: 0.95rem; font-weight: 600; line-height: 1.6; }
+  .contact-card a { color: var(--gold); text-decoration: none; font-weight: 700; }
+ 
+  /* ── ENROLL FORM ── */
+  .enroll-form {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .enroll-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.82rem; font-weight: 800; color: var(--navy); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #e0e7f0;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.92rem;
+    color: var(--navy);
+    background: #f8faff;
+    outline: none;
+    transition: border-color 0.18s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); background: white; }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--navy), #2a5298);
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: transform 0.18s, box-shadow 0.18s;
+    letter-spacing: 0.5px;
+  }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(10,26,62,0.35); }
+ 
+  /* ── FOOTER ── */
+  footer {
+    background: #060e22;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 0.82rem;
+  }
+  footer strong { color: var(--gold); }
+ 
+  /* ── SUCCESS MSG ── */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    color: var(--green);
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+  .success-msg .big { font-size: 3rem; margin-bottom: 0.5rem; }
+ 
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > * { animation: fadeInUp 0.6s ease both; }
+  .top-bar   { animation: fadeInUp 0.4s ease both; }
+  .logo-row  { animation-delay: 0.05s; }
+  .badges    { animation-delay: 0.15s; }
+  .cta-row   { animation-delay: 0.25s; }
+ 
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+    .hl-item  { padding: 10px 16px; font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+ 
+<!-- TOP BAR -->
+<div class="top-bar">🎓 Admissions Open for 2024–25 · CBSE English Medium · Classes: Play to VIII</div>
+ 
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="logo-row">
+      <div class="logo-circle">✝</div>
+      <div class="school-name">
+        <h1>Holy <span>Light</span><br>Mission School</h1>
+        <div class="subtitle">A South Indian Management</div>
+      </div>
+      <div class="logo-circle">✝</div>
+    </div>
+    <div class="badges">
+      <span class="badge gold">CBSE Affiliated</span>
+      <span class="badge">English Medium</span>
+      <span class="badge">Play to Class VIII</span>
+      <span class="badge">Bali Chhapra, Derni, Saran</span>
+    </div>
+    <div class="cta-row">
+      <a href="#enroll" class="btn btn-gold">Enroll Now — Free Admission</a>
+      <a href="#contact" class="btn btn-outline">Contact Us</a>
+    </div>
+  </div>
+  <span class="wave">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#f0f4ff"/>
+    </svg>
+  </span>
+</header>
+ 
+<!-- HIGHLIGHTS STRIP -->
+<div class="highlights">
+  <div class="hl-item"><span class="hl-icon">🏫</span> Smart Classrooms</div>
+  <div class="hl-item"><span class="hl-icon">🔒</span> CCTV Monitored</div>
+  <div class="hl-item"><span class="hl-icon">🚌</span> Transport Available</div>
+  <div class="hl-item"><span class="hl-icon">🧘</span> Yoga Classes</div>
+  <div class="hl-item"><span class="hl-icon">⚽</span> Sports Facilities</div>
+</div>
+ 
+<!-- FREE ADMISSION BANNER -->
+<div class="free-admission">
+  Free Admission — Enroll Now and Secure Your Child's Future!
+</div>
+ 
+<!-- FEATURES -->
+<section class="features" id="features">
+  <h2 class="section-title">Why Choose Holy Light?</h2>
+  <div class="features-grid">
+ 
+    <div class="feat-card">
+      <span class="feat-icon">💻</span>
+      <div><h3>Computer Lab</h3><p>Dedicated computer classes to build digital literacy from an early age.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">📲</span>
+      <div><h3>Smart Classes</h3><p>Interactive smart board technology for engaging, modern learning.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🎓</span>
+      <div><h3>Qualified & Experienced Teachers</h3><p>Highly trained educators committed to every child's growth.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">📚</span>
+      <div><h3>Special Support for Weak Students</h3><p>Extra attention and personalised study plans for students who need it.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🗣️</span>
+      <div><h3>Spoken English Classes</h3><p>Dedicated sessions to build confident English communication skills.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🚌</span>
+      <div><h3>Transport for Distant Students</h3><p>Safe vehicle pick-up and drop facility for children living far away.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">⚽</span>
+      <div><h3>Sports Facilities</h3><p>Comprehensive indoor and outdoor sports programmes for physical development.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">👨‍👩‍👧</span>
+      <div><h3>Monthly Parent-Teacher Meetings</h3><p>Regular progress discussions so parents stay informed about their child's development.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">💡</span>
+      <div><h3>Experienced Teaching Methods</h3><p>Education delivered by skilled and seasoned faculty using best-practice techniques.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">💰</span>
+      <div><h3>Free Education for Weak Families</h3><p>Financial assistance available for economically disadvantaged students.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🧘</span>
+      <div><h3>Yoga Classes</h3><p>Daily yoga sessions to keep children healthy, focused, and stress-free.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">📷</span>
+      <div><h3>CCTV Surveillance</h3><p>24/7 camera monitoring for a safe and secure school environment.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🧹</span>
+      <div><h3>Clean & Hygienic Campus</h3><p>Special emphasis on cleanliness and sanitation throughout the campus.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🎵</span>
+      <div><h3>Music & Dance Classes</h3><p>Creative arts programmes to nurture talent and holistic development.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">📖</span>
+      <div><h3>Digital Library</h3><p>Access to a modern digital library with a wide range of educational resources.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">💧</span>
+      <div><h3>Alkaline Water Facility</h3><p>Pure alkaline drinking water available for all students on campus.</p></div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">👮</span>
+      <div><h3>Male & Female Wardens</h3><p>Dedicated wardens ensure student safety and well-being at all times.</p></div>
+    </div>
+ 
+  </div>
+</section>
+ 
+<!-- SPECIAL OFFER -->
+<section class="offer-section" id="offer">
+  <div class="offer-box">
+    <h2>🌟 Special Early Admission Offer</h2>
+    <div class="discount">10% Off</div>
+    <p>For students enrolling early — limited seats available!</p>
+    <p class="limited">*Offer valid for a limited time. Terms & conditions apply.</p>
+    <br>
+    <a href="#enroll" class="btn btn-outline" style="color:var(--navy); border-color:var(--navy); background: rgba(10,26,62,0.1);">Grab This Offer →</a>
+  </div>
+</section>
+ 
+<!-- STAFF -->
+<section class="staff" id="staff">
+  <h2 class="section-title">Meet Our Team</h2>
+  <div class="staff-grid">
+ 
+    <div class="staff-card">
+      <div class="staff-avatar">SK</div>
+      <h3>Mr. Sujeet Kumar</h3>
+      <div class="role">Director</div>
+      <div class="from">Holy Light Mission School</div>
+        <h5>7701848177</h5>
+    </div>
+ 
+    <div class="staff-card">
+      <div class="staff-avatar">KR</div>
+      <h3>Kashif Raza</h3>
+      <div class="role">Principal</div>
+      <div class="from">From: Telangana</div>
+      <div class="exp">✔ 20 Years Experience</div>
+      <h5>7979008474</h5>
+    </div>
+ 
+    <div class="staff-card">
+      <div class="staff-avatar">MB</div>
+      <h3>M. Bhaskar</h3>
+      <div class="role">Teacher</div>
+      <div class="from">From: Kolkata</div>
+      <div class="exp">✔ 30 Years Experience</div>
+      <h5>6201654031</h5>
+    </div>
+ 
+  </div>
+</section>
+ 
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2 class="section-title">Get in Touch</h2>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="c-icon">📍</div>
+      <h3>Address</h3>
+      <p>Bali Chhapra, Derni<br>Saran District, Bihar</p>
+    </div>
+    <div class="contact-card">
+      <div class="c-icon">📞</div>
+      <h3>Phone Numbers</h3>
+      <p>
+        <a href="tel:7701848177">770-184-8177</a><br>
+        <a href="tel:7979008474">797-900-8474</a><br>
+        <a href="tel:6201654031">620-165-4031</a>
+      </p>
+    </div>
+    <div class="contact-card">
+      <div class="c-icon">🕐</div>
+      <h3>School Hours</h3>
+      <p>Mon – Sat<br>8:00 AM – 2:00 PM</p>
+    </div>
+    <div class="contact-card">
+      <div class="c-icon">🎓</div>
+      <h3>Classes Offered</h3>
+      <p>Play Group<br>to Class VIII<br><em style="color:var(--gold); font-style:normal; font-weight:800;">CBSE English Medium</em></p>
+    </div>
+  </div>
+ 
+  <!-- ENROLL FORM -->
+  <div class="enroll-form" id="enroll">
+    <h3>📝 Free Admission Enquiry</h3>
+    <div id="formContent">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Student's Name *</label>
+          <input type="text" id="studentName" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label>Parent's Name *</label>
+          <input type="text" id="parentName" placeholder="Father / Mother name">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Class Applying For *</label>
+          <select id="classSelect">
+            <option value="">Select class</option>
+            <option>Play Group</option>
+            <option>Nursery</option>
+            <option>LKG</option>
+            <option>UKG</option>
+            <option>Class I</option>
+            <option>Class II</option>
+            <option>Class III</option>
+            <option>Class IV</option>
+            <option>Class V</option>
+            <option>Class VI</option>
+            <option>Class VII</option>
+            <option>Class VIII</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Contact Number *</label>
+          <input type="tel" id="phone" placeholder="Mobile number">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Village / Area</label>
+        <input type="text" id="address" placeholder="Your village or area">
+      </div>
+      <div class="form-group">
+        <label>Message / Query</label>
+        <textarea id="message" placeholder="Any questions or additional information…"></textarea>
+      </div>
+      <button class="submit-btn" onclick="handleSubmit()">Submit Enquiry →</button>
+    </div>
+    <div class="success-msg" id="successMsg">
+      <div class="big">🎉</div>
+      Thank you! Your enquiry has been received.<br>
+      <span style="color:#555; font-weight:600; font-size:0.9rem;">We will contact you shortly.</span>
+    </div>
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer>
+  <p>© 2024 <strong>Holy Light Mission School</strong> · Bali Chhapra, Derni, Saran · All rights reserved.</p>
+  <p style="margin-top:5px;">CBSE English Medium | Classes: Play to VIII | Director: Mr. Sujeet Kumar</p>
+</footer>
+ 
+<script>
+  function handleSubmit() {
+    const name    = document.getElementById('studentName').value.trim();
+    const parent  = document.getElementById('parentName').value.trim();
+    const cls     = document.getElementById('classSelect').value;
+    const phone   = document.getElementById('phone').value.trim();
+ 
+    if (!name || !parent || !cls || !phone) {
+      alert('Please fill in all required fields (marked with *).');
+      return;
+    }
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('successMsg').style.display  = 'block';
+  }
+ 
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+ 
+  // Subtle reveal on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+    });
+  }, { threshold: 0.1 });
+ 
+  document.querySelectorAll('.feat-card, .staff-card, .contact-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
